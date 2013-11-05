@@ -25,7 +25,7 @@ Meteor.methods({
     Dates.update(dateId,{$set:{
       'bookedOn': new Date(),
       'user': Meteor.userId(),
-      'username': Meteor.user().profile.name
+      'username': Meteor.user().profile.name || Meteor.user().services.github.username
     }});
     return dateId;
   },

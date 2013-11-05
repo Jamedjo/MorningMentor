@@ -35,6 +35,7 @@ Template.bookings.booked = function(){
 
 
 Template.main.isAdmin = isAdmin;
+Template.bookings.isAdmin = isAdmin;
 
 Handlebars.registerHelper("prettifyDate", function(date) {
   return moment(date).format('dddd Do MMM YYYY');
