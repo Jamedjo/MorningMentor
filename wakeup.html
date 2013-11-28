@@ -7,6 +7,11 @@
     <div class="navbar-inner">
       <div class="container">
         <a class="brand" href="/">WakeUpToCode</a>
+        <ul class="nav pull-right">
+          <li>
+            {{loginButtons}}
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -16,6 +21,10 @@
 <template name="hello">
   <h1>Wake Up To Code</h1>
   <h3>{{greeting}}</h3>
-  <div class="well"><h4>Sign in with github to book a session</h4>{{loginButtons}}</div>
+  {{#unless currentUser}}{{> sign_in_box}}{{/unless}}
   <input type="button" value="Click" />
+</template>
+
+<template name="sign_in_box">
+  <div class="well"><h4>Sign in with github to book a session</h4>{{loginButtons}}</div>
 </template>
