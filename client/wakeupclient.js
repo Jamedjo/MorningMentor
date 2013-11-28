@@ -24,12 +24,14 @@ Template.bookings.bookings = function(){
   return Bookings.find({},{sort:{'createdAt':-1}});
 };
 
+Template.bookings.dates = bookable_dates;
+
 
 Template.main.isAdmin = isAdmin;
 
 Handlebars.registerHelper("prettifyDate", function(date) {
-  return moment(date).format('LL');
+  return moment(date).format('dddd Do MMM YYYY');
 });
 Handlebars.registerHelper("prettifyTimeAgo", function(date) {
-  return moment(date).calendar();
+  return moment(date).fromNow();
 });

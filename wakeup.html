@@ -23,7 +23,6 @@
   <h3>{{greeting}}</h3>
   {{#if isAdmin}}<h3>Yo Yo Jamedjo</h3>{{/if}}
   {{#unless currentUser}}{{> sign_in_box}}{{/unless}}
-  <input type="button" data-date="today" class="book" value="Book" />
   {{> bookings}}
 </template>
 
@@ -32,13 +31,19 @@
 </template>
 
 <template name="bookings">
-  <h3>Bookings</h3>
+  <h3>Days</h3>
+  {{#each dates}}
+    <div>
+      {{prettifyDate date}}
+      <input type="button" data-date="today" class="book" value="Book" />
+    </div>
+  {{/each}}
   {{#each bookings}}
     {{> booking}}
   {{/each}}
 </template>
 
 <template name="booking">
-  <div>Date: {{prettifyDate date}}</div>
+  <div>Date: {{date}}</div>
   <div>Created: {{prettifyTimeAgo createdAt}}</div>
 </template>
