@@ -21,7 +21,10 @@
 <template name="main">
   <h1>Wake Up To Code</h1>
   <h3>{{greeting}}</h3>
-  {{#if isAdmin}}<h3>Yo Yo Jamedjo</h3>{{/if}}
+  {{#if isAdmin}}
+    <h3>Admin</h3>
+    <input type="date"><input type="button" value="Add">
+  {{/if}}
   {{#unless currentUser}}{{> sign_in_box}}{{/unless}}
   {{> bookings}}
 </template>
@@ -33,17 +36,9 @@
 <template name="bookings">
   <h3>Days</h3>
   {{#each dates}}
-    <div>
+    <div class="day">
       {{prettifyDate date}}
       <input type="button" data-date="today" class="book" value="Book" />
     </div>
   {{/each}}
-  {{#each bookings}}
-    {{> booking}}
-  {{/each}}
-</template>
-
-<template name="booking">
-  <div>Date: {{date}}</div>
-  <div>Created: {{prettifyTimeAgo createdAt}}</div>
 </template>

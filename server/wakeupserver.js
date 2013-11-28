@@ -1,16 +1,25 @@
-Bookings = new Meteor.Collection("bookings");
+Dates = new Meteor.Collection("dates");
 
 Meteor.startup(function () {
-  // code to run on server at startup
+  if(Dates.find().count()==0){
+    _.each(bookable_dates,function(dateString){
+      Meteor.call('addDate',dateString);
+    });
+  }
 });
 
 Meteor.methods({
-  addBooking: function(date){
-    var bookingId = Bookings.insert({
-      'date': date,
-      'createdAt': new Date(),
+  addDate: function(dateString){
+    var dateId = Dates.insert({
+      'date': new Date(dateString)
+    });
+    return dateId;
+  },
+  bookDate: function(dateId){
+    var dateId = Dates.update(dateId,{
+      'bookedOn': new Date(),
       'user': Meteor.userId()
     });
-    return bookingId;
+    return dateId;
   }
 });

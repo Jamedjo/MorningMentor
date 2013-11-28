@@ -11,20 +11,18 @@ if (Meteor.isClient) {
       e.preventDefault();
       var el = e.target;
       var date = el.getAttribute('data-date')
-      Meteor.call("addBooking",date,function(eror,bookingId){
+      Meteor.call("bookDate",date,function(eror,bookingId){
         console.log('added booking with id '+bookingId);
       });
     }
   });
 }
 
-var Bookings = new Meteor.Collection("bookings");
+var Dates = new Meteor.Collection("dates");
 
-Template.bookings.bookings = function(){
-  return Bookings.find({},{sort:{'createdAt':-1}});
+Template.bookings.dates = function(){
+  return Dates.find({},{sort:{'date':1}});
 };
-
-Template.bookings.dates = bookable_dates;
 
 
 Template.main.isAdmin = isAdmin;
