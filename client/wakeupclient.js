@@ -14,9 +14,6 @@ if (Meteor.isClient) {
       Meteor.call("addBooking",date,function(eror,bookingId){
         console.log('added booking with id '+bookingId);
       });
-      if (typeof console !== 'undefined'){
-        console.log(date);
-      }
     }
   });
 }
@@ -29,3 +26,10 @@ Template.bookings.bookings = function(){
 
 
 Template.main.isAdmin = isAdmin;
+
+Handlebars.registerHelper("prettifyDate", function(date) {
+  return moment(date).format('LL');
+});
+Handlebars.registerHelper("prettifyTimeAgo", function(date) {
+  return moment(date).calendar();
+});

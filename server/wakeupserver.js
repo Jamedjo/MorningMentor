@@ -6,7 +6,6 @@ Meteor.startup(function () {
 
 Meteor.methods({
   addBooking: function(date){
-    console.log('Adding Booking');
     var bookingId = Bookings.insert({
       'date': date,
       'createdAt': new Date(),

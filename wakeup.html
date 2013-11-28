@@ -39,6 +39,6 @@
 </template>
 
 <template name="booking">
-  <div>Date: {{date}}</div>
-  <div>Created: {{createdAt}}</div>
+  <div>Date: {{prettifyDate date}}</div>
+  <div>Created: {{prettifyTimeAgo createdAt}}</div>
 </template>
