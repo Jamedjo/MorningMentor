@@ -18,19 +18,19 @@ Meteor.methods({
     }
   },
   bookDate: function(dateId){
-    Dates.update(dateId,{
+    Dates.update(dateId,{$set:{
       'bookedOn': new Date(),
       'user': Meteor.userId(),
       'username': Meteor.user().profile.name
-    },true);
+    }});
     return dateId;
   },
   unbookDate: function(dateId){
-    Dates.update(dateId,{
+    Dates.update(dateId,{$unset:{
       'bookedOn': null,
       'user': null,
       'username': null
-    },true);
+    }});
     return dateId;
   }
 });
