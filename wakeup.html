@@ -22,9 +22,22 @@
   <h1>Wake Up To Code</h1>
   <h3>{{greeting}}</h3>
   {{#unless currentUser}}{{> sign_in_box}}{{/unless}}
-  <input type="button" value="Click" />
+  <input type="button" data-date="today" class="book" value="Book" />
+  {{> bookings}}
 </template>
 
 <template name="sign_in_box">
   <div class="well"><h4>Sign in with github to book a session</h4>{{loginButtons}}</div>
+</template>
+
+<template name="bookings">
+  <h3>Bookings</h3>
+  {{#each bookings}}
+    {{> booking}}
+  {{/each}}
+</template>
+
+<template name="booking">
+  <div>Date: {{date}}</div>
+  <div>Created: {{createdAt}}</div>
 </template>
