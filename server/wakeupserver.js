@@ -10,16 +10,27 @@ Meteor.startup(function () {
 
 Meteor.methods({
   addDate: function(dateString){
-    var dateId = Dates.insert({
-      'date': new Date(dateString)
-    });
-    return dateId;
+    if(dateString){
+      var dateId = Dates.insert({
+        'date': new Date(dateString)
+      });
+      return dateId;
+    }
   },
   bookDate: function(dateId){
-    var dateId = Dates.update(dateId,{
+    Dates.update(dateId,{
       'bookedOn': new Date(),
-      'user': Meteor.userId()
-    });
+      'user': Meteor.userId(),
+      'username': Meteor.user().profile.name
+    },true);
+    return dateId;
+  },
+  unbookDate: function(dateId){
+    Dates.update(dateId,{
+      'bookedOn': null,
+      'user': null,
+      'username': null
+    },true);
     return dateId;
   }
 });

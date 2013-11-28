@@ -23,7 +23,7 @@
   <h3>{{greeting}}</h3>
   {{#if isAdmin}}
     <h3>Admin</h3>
-    <input type="date"><input type="button" value="Add">
+    <div id="admin_date"><input id="admin_date_input" type="date"><input type="button" value="Add"></div>
   {{/if}}
   {{#unless currentUser}}{{> sign_in_box}}{{/unless}}
   {{> bookings}}
@@ -37,8 +37,13 @@
   <h3>Days</h3>
   {{#each dates}}
     <div class="day">
-      {{prettifyDate date}}
-      <input type="button" data-date="today" class="book" value="Book" />
+      {{prettifyDate date}} @ 8am!!!
+      {{#if user}}
+        <input type="button" data-id="{{_id}}" class="unbook" value="Unbook" />
+        {{username user}}
+      {{else}}
+        <input type="button" data-id="{{_id}}" class="book" value="Book" />
+      {{/if}}
     </div>
   {{/each}}
 </template>

@@ -1,5 +1,5 @@
 /* CSS declarations go here */
-input.book {
+input.book, input.unbook {
   float: right;
 }
 .day {
