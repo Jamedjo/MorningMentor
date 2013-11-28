@@ -1,11 +1,11 @@
 'use strict';
 
 if (Meteor.isClient) {
-  Template.hello.greeting = function () {
+  Template.main.greeting = function () {
     return "James needs to wake up to code!";
   };
 
-  Template.hello.events({
+  Template.main.events({
     'click input.book' : function (e) {
       // template data, if any, is available in 'this'
       e.preventDefault();
@@ -26,3 +26,6 @@ var Bookings = new Meteor.Collection("bookings");
 Template.bookings.bookings = function(){
   return Bookings.find({},{sort:{'createdAt':-1}});
 };
+
+
+Template.main.isAdmin = isAdmin;

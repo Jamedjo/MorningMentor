@@ -15,12 +15,13 @@
       </div>
     </div>
   </div>
-  <div class="container">{{> hello}}</div>
+  <div class="container">{{> main}}</div>
 </body>
 
-<template name="hello">
+<template name="main">
   <h1>Wake Up To Code</h1>
   <h3>{{greeting}}</h3>
+  {{#if isAdmin}}<h3>Yo Yo Jamedjo</h3>{{/if}}
   {{#unless currentUser}}{{> sign_in_box}}{{/unless}}
   <input type="button" data-date="today" class="book" value="Book" />
   {{> bookings}}
