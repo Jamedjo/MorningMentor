@@ -1,4 +1,3 @@
-Dates = new Meteor.Collection("dates");
 
 Meteor.startup(function () {
   if(Dates.find().count()==0){

@@ -38,12 +38,16 @@
   {{#each dates}}
     <div class="day">
       {{prettifyDate date}} @ 8am
-      {{#if user}}
-        <input type="button" data-id="{{_id}}" class="unbook" value="Unbook" />
-        {{username user}}
-      {{else}}
-        <input type="button" data-id="{{_id}}" class="book" value="Book" />
+      {{#if currentUser}}
+        {{#if user}}
+          <input type="button" data-id="{{_id}}" class="unbook btn btn-inverse" value="Unbook" />
+        {{else}}
+          {{#unless booked}}
+            <input type="button" data-id="{{_id}}" class="book btn" value="Book" />
+          {{/unless}}
+        {{/if}}
       {{/if}}
+      {{username user}}
     </div>
   {{/each}}
 </template>

@@ -30,11 +30,16 @@ if (Meteor.isClient) {
   });
 }
 
-var Dates = new Meteor.Collection("dates");
 
 Template.bookings.dates = function(){
   return Dates.find({},{sort:{'date':1}});
 };
+
+Template.bookings.booked = function(){
+  return Dates.find({
+      'user': Meteor.userId()
+    }).count() != 0;
+}
 
 
 Template.main.isAdmin = isAdmin;
