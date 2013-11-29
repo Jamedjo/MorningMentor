@@ -33,3 +33,13 @@ Meteor.methods({
     return dateId;
   }
 });
+
+Meteor.publish(null, function() {
+            return Dates.find();
+});
+
+Meteor.publish(null, function () {
+  return Meteor.users.find({_id: this.userId},
+                           {fields: {'services.github.username': 1}});
+});
+
