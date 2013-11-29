@@ -39,6 +39,7 @@
     <div class="day">
       {{#if true}}<button class="close removeDate pull-left" data-id="{{_id}}">&times;</button>{{/if}}
       {{prettifyDate date}} @ 8am
+      <div class='pull-right'>
       {{#if currentUser}}
         {{#if user}}
           <input type="button" data-id="{{_id}}" class="unbook btn btn-inverse" value="Unbook" />
@@ -49,6 +50,7 @@
         {{/if}}
       {{/if}}
       {{username user}}
+      </div>
     </div>
   {{/each}}
 </template>

@@ -4,5 +4,8 @@ input.book, input.unbook {
 }
 .day {
   height: 30px;
-  max-width: 300px;
+}
+
+.container{
+  max-width: 550px;
 }
