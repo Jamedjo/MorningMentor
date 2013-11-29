@@ -16,6 +16,11 @@ Meteor.methods({
       return dateId;
     }
   },
+  removeDate: function(dateId){
+    return Dates.remove({
+      '_id': dateId
+    });
+  },
   bookDate: function(dateId){
     Dates.update(dateId,{$set:{
       'bookedOn': new Date(),

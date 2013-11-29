@@ -6,6 +6,10 @@ if (Meteor.isClient) {
   };
 
   Template.main.events({
+    'click .removeDate' : function (e) {
+      var dateId = e.target.getAttribute('data-id');
+      Meteor.call("removeDate",dateId);
+    },
     'click input.book' : function (e) {
       e.preventDefault();
       var el = e.target;

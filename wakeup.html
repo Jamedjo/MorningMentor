@@ -37,6 +37,7 @@
   <h3>Days</h3>
   {{#each dates}}
     <div class="day">
+      {{#if true}}<button class="close removeDate pull-left" data-id="{{_id}}">&times;</button>{{/if}}
       {{prettifyDate date}} @ 8am
       {{#if currentUser}}
         {{#if user}}
